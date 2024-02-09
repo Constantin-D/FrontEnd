@@ -24,10 +24,8 @@ async function displayAllWorksInHtml() {
         const figcaptionElement = document.createElement("figcaption");
         imageElement.src = work.imageUrl;
         figcaptionElement.textContent = work.title;
-        // figureElement.classList.add("gallery");
         figureElement.appendChild(imageElement);
         figureElement.appendChild(figcaptionElement);
-        //document.main.appendchild(figcationElement);
         galleryElement.appendChild(figureElement);
     });
 }
@@ -38,7 +36,7 @@ async function getCategories() {
     await fetch("http://localhost:5678/api/categories")
         .then((Response) => Response.json())
         .then((dataCategories) => {
-            console.log(dataCategories);
+            // console.log(dataCategories);
             categories = dataCategories;
             return categories;
         })
@@ -47,8 +45,14 @@ async function getCategories() {
 
 async function displayAllCategoriesInHtml() {
     await getCategories();
-    categories.forEach((category) => {});
+    categories.forEach((category) => {
+        const buttonElement = document.createElement("button");
+        buttonElement.textContent = category.name;
+        buttonElement.setAttribute("data-category-id", category.id);
+        buttonElement.addEventListener("click", filterWorksByCategory);
+        filtersElement.appendChild(buttonElement);
+    });
 }
 
+displayAllWorksInHtml();
 displayAllCategoriesInHtml();
-
