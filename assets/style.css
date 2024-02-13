@@ -209,9 +209,32 @@ li:hover {
     margin-bottom: 1em;
 }
 
-/* .hidden {
+#filters {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    font-family: "Syne";
+    font-weight: 700;
+    color: white;
+    background-color: #1d6154;
+    margin: 2em auto;
+    width: 180px;
+    text-align: center;
+    border-radius: 60px;
+    cursor: pointer;
+}
+
+/* Style au survol */
+button:hover {
+    background-color: black;
+
+}
+
+.hidden {
     display: none;
-} */
+}
 .gallery {
     width: 100%;
     display: grid;
@@ -263,6 +286,7 @@ input[type="submit"] {
     width: 180px;
     text-align: center;
     border-radius: 60px;
+    cursor: pointer;
 }
 
 footer nav ul {
