@@ -217,18 +217,20 @@ li:hover {
 button {
     font-family: "Syne";
     font-weight: 700;
-    color: white;
-    background-color: #1d6154;
-    margin: 2em auto;
-    width: 180px;
+    color: #1d6154;
+    background-color: white;
+    margin: 2em 0.5em;
+    /* width: 180px; */
     text-align: center;
+    border-color: #1d6154;
     border-radius: 60px;
     cursor: pointer;
 }
 
 /* Style au survol */
 button:hover {
-    background-color: black;
+    color: white;
+    background-color: #1d6154;
 
 }
 
