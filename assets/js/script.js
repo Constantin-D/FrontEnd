@@ -148,8 +148,8 @@ async function getCategories() {
 async function displayAllCategoriesInHtml() {
     await getCategories();
 
-    // Ajouter la catégorie "Tous" au début du tableau des catégories
-    categories.unshift({ id: 0, name: "Tous" });
+    // // Ajouter la catégorie "Tous" au début du tableau des catégories
+    // categories.unshift({ id: 0, name: "Tous" });
 
     // Création du bouton "Tous"
     const allCategoriesButton = document.createElement("button");
