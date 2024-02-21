@@ -149,15 +149,15 @@ async function displayAllCategoriesInHtml() {
     await getCategories();
 
     // // Ajouter la catégorie "Tous" au début du tableau des catégories
-    // categories.unshift({ id: 0, name: "Tous" });
+    categories.unshift({ id: 0, name: "Tous" });
     // categories.splice(0, 0, "Tous")
 
-    // Création du bouton "Tous"
-    const allCategoriesButton = document.createElement("button");
-    allCategoriesButton.textContent = "Tous";
-    allCategoriesButton.setAttribute("data-category-id", "0");
-    allCategoriesButton.addEventListener("click", filterWorksByCategory);
-    filtersElement.appendChild(allCategoriesButton);
+    // // Création du bouton "Tous"
+    // const allCategoriesButton = document.createElement("button");
+    // allCategoriesButton.textContent = "Tous";
+    // allCategoriesButton.setAttribute("data-category-id", "0");
+    // allCategoriesButton.addEventListener("click", filterWorksByCategory);
+    // filtersElement.appendChild(allCategoriesButton);
 
     // Affichage des boutons des autres catégories
     categories.forEach(function (category) {
@@ -202,4 +202,6 @@ async function filterWorksByCategory(event) {
 // filterWorksByCategory();
 displayAllWorksInHtml();
 displayAllCategoriesInHtml();
+
+
 

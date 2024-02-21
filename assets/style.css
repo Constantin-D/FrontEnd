@@ -178,6 +178,10 @@ nav li {
     font-size: 1.2em;
 }
 
+li a {
+    text-decoration: none;
+}
+
 li:hover {
     color: #b1663c;
 }
