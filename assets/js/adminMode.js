@@ -1,7 +1,9 @@
+// Récupérer le token depuis le localStorage
 const token = localStorage.getItem("token");
 
 if (token) {
     console.log(token);
+    // Appeler la fonction logout
     logout();
 
     // Afficher la barre noire
@@ -12,25 +14,36 @@ if (token) {
     `;
     editModeBar.style.display = "flex";
 
-    // Ecouteur d'événement au clic sur l'icône de modification pour ouvrir la modale
-    editIcon.addEventListener("click", () => {});
-
     // Faire disparaître les filtres
-    document.getElementById("filters").classList.add("hidden");
+    // document.getElementById("filters").classList.add("hidden");
+    const filters = document.getElementById("filters");
+    if (filters) {
+        filters.classList.add("hidden");
+        // console.log("filters");
+    }
 
     //Ajouter l'icône de modification et le texte "modifier"
-    const editIcon = document.createElement("i");
-    editIcon.classList.add("fa-solid", "fa-pen-to-square");
-    editIcon.style.color = "#1d6154";
-    editIcon.style.size = "1rem";
+    const filtersHidden = document.querySelector("#portfolio h2");
+    if (filtersHidden) {
+        // Ajouter l'icône de modification
+        const editIcon = document.createElement("i");
+        editIcon.classList.add("fa-solid", "fa-pen-to-square", "edit-icon"); // Ajouter la classe edit-icon pour l'icône
+        filtersHidden.appendChild(editIcon);
 
-    const editText = doc.createElement("span");
-    editText.textContent = "modifier";
-    editText.style.color = "#1d6154";
-    editText.style.size = "1rem";
+        // Ajouter le texte "modifier"
+        const editText = document.createElement("span");
+        editText.textContent = "modifier";
+        editText.classList.add("edit-text"); // Ajouter la classe edit-text pour le texte "modifier"
+        filtersHidden.appendChild(editText);
 
-    // Ecouteur d'événement au clic sur l'icône modification pour ouvrir la modale
-    editIcon.addEventListener("clic", () => {});
+        // Ajouter un écouteur d'événements pour le clic sur l'icône de modification
+        editIcon.addEventListener("click", () => {
+            // Ouvrir la modale
+            const modalContainer = document.getElementById("modalContainer");
+            modalContainer.setAttribute("aria-hidden", "false"); // Afficher la modale
+            // console.log("Modale ouverte suite au clic sur l'icône de modification.");    
+        });
+    }
 }
 
 // Fonction pour se déconnecter

@@ -15,6 +15,7 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<link rel="stylesheet" href="./assets/admin-mode.css">
+	<link rel="stylesheet" href="./assets/modal.css">
 	
 
 </head>
@@ -78,9 +79,47 @@
 			</ul>
 		</nav>
 	</footer>
-	
+
+	<aside id="modalContainer" class="modal" aria-hidden="true" role="dialog" aria-labelledby="title-modal">
+		<!-- modale 1 -->
+		<!-- <div class="overlay"></div> -->
+		<div class="modal-content">
+			<span class="close"><i class="fa-solid fa-xmark"></i></span>
+			<h3 class="title-modal">Galerie photo</h3>
+			<button class="btn-modal1">Ajouter une photo</button>
+			<!-- Contenu de la modale -->
+		</div>
+		<!-- Modale 2 -->
+		<div>
+			<h3 class="title-modal">Ajout photo</h3>
+
+			<i class="fa-solid fa-xmark close"></i>
+			<i class="fa-solid fa-arrow-left arrowReturn"></i>
+
+			<form id="dataForm" enctype="multipart/form-data" action="/" method="post">
+			<!-- Contenu du formulaire -->
+				<div class="ajouterPhoto">
+					<i class="fa-regular fa-image fa-5x"></i>
+					<label id="btnAddPicture" for="filePicture">+ Ajouter photo</label>
+					<input type="file" name="image" id="filePicture" multiple accept="images/*" required />
+					<p>jpg, png : 4mo max</p>
+				</div>
+				<label for="title">Titre</label>
+				<input type="text" id="title" name="title" required>
+				<label for="categorieStyle">Catégorie</label>
+				<select name="category" id="categorieStyle" required>
+					<option value=""></option>
+					<option value="1">Objets</option>
+					<option value="2">Appartements</option>
+					<option value="3">Hôtels & Restaurants</option>
+				</select>
+			</form>
+		</div>
+	</aside>
+
 	<script src="./assets/js/script.js"></script>
 	<script src="./assets/js/adminMode.js"></script>
+	<script src="./assets/js/modal.js"></script>
 </body>
 
 </html>

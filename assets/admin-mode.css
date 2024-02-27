@@ -1,8 +1,13 @@
-.edit-mode-bar {
+#editModeBar {
     /* position: fixed; */
-    top: 0;
+    /* top: 0;
     left: 0;
-    right: 0;
+    right: 0; */
+    /* max-width: calc(100% - (2 * 50px));
+        margin-left: auto;
+        margin-right: auto; */
+    /* position: absolute;
+    top: 0; */
     width: 100%;
     height: 3.7rem;
     background-color: black;
@@ -12,10 +17,28 @@
     align-items: center;
     display: none;
     /* z-index: 100; */
-    /* padding: 0;
-    margin: 0; */
+    /* padding: 0; */
+    /* margin: 0; */
 }
 
 .edit-mode-bar span {
     margin-left: 10px;
+}
+
+/* .hidden {
+    display: none;
+} */
+
+.edit-icon {
+    color: black;
+    font-size: 1rem;
+    margin-left: 2rem;
+    cursor: pointer;
+}
+
+.edit-text {
+    color: black;
+    font-size: 1rem;
+    font-weight: 200;
+    margin-left: 0.5rem;
 }
