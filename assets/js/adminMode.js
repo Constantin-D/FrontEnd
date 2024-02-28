@@ -19,7 +19,7 @@ if (token) {
     const filters = document.getElementById("filters");
     if (filters) {
         filters.classList.add("hidden");
-        // console.log("filters");
+        console.log("filters");
     }
 
     //Ajouter l'icône de modification et le texte "modifier"
@@ -41,10 +41,10 @@ if (token) {
         // Ajouter un écouteur d'événements pour chaque icône de modification
         editIcon.addEventListener("click", () => {
             // Ouvrir la modale
-            const modalContent = document.querySelector(".modal-content");
+            const modalContainer = document.querySelector("#modalContainer");
             modalContainer.setAttribute("aria-hidden", "true"); // Afficher la modale
             console.log("editIcon");    
-            // modalContent.classList.toggle("active");   
+            modalContainer.classList.toggle("active");   
         });
 
         // editIcon.addEventListener("click", openModal);

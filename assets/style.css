@@ -136,8 +136,8 @@ table {
 
 /** end reset css**/
 body {
-    max-width: 1140px;
-    margin: auto;
+    /* max-width: 1140px;
+    margin: auto; */
     font-family: "Work Sans";
     font-size: 14px;
 }
@@ -146,15 +146,18 @@ header {
     display: flex;
     justify-content: space-between;
     margin: 50px 0;
-    /* z-index: 200; */
+    max-width: 1140px;
+    margin: auto;
 }
 
 main .hidden {
-    display: none;
+    display: none !important;
+
 }
 
 section {
-    margin: 50px 0;
+    margin: 50px auto;
+    max-width: 1140px;
 }
 
 h1 {
