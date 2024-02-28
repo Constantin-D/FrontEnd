@@ -36,15 +36,28 @@ if (token) {
         editText.classList.add("edit-text"); // Ajouter la classe edit-text pour le texte "modifier"
         filtersHidden.appendChild(editText);
 
-        // Ajouter un écouteur d'événements pour le clic sur l'icône de modification
+
+
+        // Ajouter un écouteur d'événements pour chaque icône de modification
         editIcon.addEventListener("click", () => {
             // Ouvrir la modale
-            const modalContainer = document.getElementById("modalContainer");
-            modalContainer.setAttribute("aria-hidden", "false"); // Afficher la modale
-            // console.log("Modale ouverte suite au clic sur l'icône de modification.");    
+            const modalContent = document.querySelector(".modal-content");
+            modalContainer.setAttribute("aria-hidden", "true"); // Afficher la modale
+            console.log("editIcon");    
+            // modalContent.classList.toggle("active");   
         });
+
+        // editIcon.addEventListener("click", openModal);
     }
+
+
 }
+
+// // Fonction pour ouvrir la modale
+// function openModal() {
+//     const modalContainer = document.getElementById("modalContainer");
+//     modalContainer.setAttribute("aria-hidden", "false");
+// }
 
 // Fonction pour se déconnecter
 function logout() {
