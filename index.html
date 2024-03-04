@@ -87,20 +87,19 @@
 			<span class="close"><i class="fa-solid fa-xmark"></i></span>
 			<h3 class="title-modal">Galerie photo</h3>
 			<div class="image-gallery-modal"></div>
+			<hr class="line">
 			<button class="btn-modal1">Ajouter une photo</button>
 			<!-- Contenu de la modale -->
 		</div>
 		<!-- Modale 2 -->
 		<div class="modal-secondary hidden">
 			<h3 class="title-modal">Ajout photo</h3>
-
 			<i class="fa-solid fa-xmark close"></i>
 			<i class="fa-solid fa-arrow-left arrowReturn"></i>
-
 			<form id="dataForm" enctype="multipart/form-data" action="/" method="post">
 			<!-- Contenu du formulaire -->
 				<div class="ajouterPhoto">
-					<i class="fa-regular fa-image fa-5x"></i>
+					<i class="fa-regular fa-image"></i>
 					<label id="btn-addPicture" for="filePicture">+ Ajouter photo</label>
 					<input type="file" name="image" id="filePicture" multiple accept="images/*" required />
 					<p>jpg, png : 4mo max</p>

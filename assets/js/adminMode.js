@@ -15,7 +15,6 @@ if (token) {
     editModeBar.style.display = "flex";
 
     // Faire disparaître les filtres
-    // document.getElementById("filters").classList.add("hidden");
     const filters = document.getElementById("filters");
     if (filters) {
         filters.classList.add("hidden");
@@ -36,28 +35,15 @@ if (token) {
         editText.classList.add("edit-text"); // Ajouter la classe edit-text pour le texte "modifier"
         filtersHidden.appendChild(editText);
 
-
-
-        // Ajouter un écouteur d'événements pour chaque icône de modification
+        // Ajouter un écouteur d'événements pour l'icône de modification
         editIcon.addEventListener("click", () => {
             // Ouvrir la modale
             const modalContainer = document.querySelector("#modalContainer");
             modalContainer.setAttribute("aria-hidden", "true"); // Afficher la modale
-            console.log("editIcon");    
-            modalContainer.classList.toggle("active");   
+            modalContainer.classList.toggle("active");
         });
-
-        // editIcon.addEventListener("click", openModal);
     }
-
-
 }
-
-// // Fonction pour ouvrir la modale
-// function openModal() {
-//     const modalContainer = document.getElementById("modalContainer");
-//     modalContainer.setAttribute("aria-hidden", "false");
-// }
 
 // Fonction pour se déconnecter
 function logout() {
