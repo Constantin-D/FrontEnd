@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<link rel="stylesheet" href="./assets/admin-mode.css">
 	<link rel="stylesheet" href="./assets/modal.css">
-	
+
 
 </head>
 
@@ -97,22 +97,26 @@
 			<i class="fa-solid fa-xmark close"></i>
 			<i class="fa-solid fa-arrow-left arrowReturn"></i>
 			<form id="dataForm" enctype="multipart/form-data" action="/" method="post">
-			<!-- Contenu du formulaire -->
-				<div class="ajouterPhoto">
-					<i class="fa-regular fa-image"></i>
-					<label id="btn-addPicture" for="filePicture">+ Ajouter photo</label>
-					<input type="file" name="image" id="filePicture" multiple accept="images/*" required />
+				<!-- Contenu du formulaire -->
+				<div class="field-drop">
+					<i class="fa-regular fa-image image-drop"></i>
+					<label id="btn-add-picture" for="file-picture">+ Ajouter photo</label>
+					<input type="file" hidden name="image" id="file-picture" multiple accept="images/*" required />
 					<p>jpg, png : 4mo max</p>
 				</div>
-				<label for="title">Titre</label>
-				<input type="text" id="title" name="title" required>
-				<label for="categorieStyle">Catégorie</label>
-				<select name="category" id="categorieStyle" required>
-					<option value=""></option>
-					<option value="1">Objets</option>
-					<option value="2">Appartements</option>
-					<option value="3">Hôtels & Restaurants</option>
-				</select>
+				<div class="fieldForm">
+					<label for="title">Titre</label>
+					<input type="text" id="title" name="title" required>
+					<label for="categorieStyle">Catégorie</label>
+					<select name="category" id="category-style" required>
+						<option value=""></option>
+						<option value="1">Objets</option>
+						<option value="2">Appartements</option>
+						<option value="3">Hôtels & Restaurants</option>
+					</select>
+				</div>
+				<hr class="line">
+				<button class="uploadSubmit">Valider</button>
 			</form>
 		</div>
 	</div>

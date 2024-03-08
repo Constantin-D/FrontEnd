@@ -1,4 +1,3 @@
-
 // Variables globales
 const loginForm = document.querySelector(".identifyForm");
 const emailInput = document.getElementById("email");
@@ -7,7 +6,6 @@ const emailRegex = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
 
 // Écouteur d'événement pour la soumission du formulaire de connexion
 loginForm.addEventListener("submit", async (event) => {
-    // Empêcher le comportement par défaut du formulaire
     event.preventDefault();
     let validationCount = 0;
     if (emailInput.value === "") {
@@ -18,12 +16,11 @@ loginForm.addEventListener("submit", async (event) => {
 
     // Vérifier si le champ mot de passe est vide
     if (passwordInput.value === "") {
-        // Afficher un message d'erreur ou effectuer une action appropriée
     } else {
         validationCount++;
     }
 
-    // Si les deux champs sont valides, envoyer les données au serveur
+    // Si les deux champs sont validés, envoyer les données au serveur
     if (validationCount === 2) {
         const formData = {
             email: emailInput.value,
@@ -67,13 +64,11 @@ loginForm.addEventListener("submit", async (event) => {
                     loginTitle.nextSibling
                 );
 
-                // Appliquer les styles aux champs email et mot de passe
                 emailInput.style.borderColor = "red";
                 passwordInput.style.borderColor = "red";
             }
         } catch (error) {
             console.error("Erreur lors de la requête : ", error);
-            // Afficher un message d'erreur à l'utilisateur en cas de problème de connexion
             alert("Une erreur est survenue. Veuillez réessayer plus tard.");
         }
     }

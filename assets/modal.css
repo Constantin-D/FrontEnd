@@ -32,7 +32,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
 
 .modal-primary.hidden {
@@ -41,11 +41,19 @@
 
 .modal-primary .title-modal {
     font-family: 'Work Sans';
-    font-size: 25px;
+    font-size: 26px;
     text-align: center;
-    margin-top: 25px;
+    margin-top: 60px;
+    margin-bottom: 46px;
 }
 
+.image-gallery-modal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 15px;
+    margin: 0 90px;
+}
 
 .work-thumbnail {
     position: relative;
@@ -68,23 +76,24 @@
     color: white;
     background-color: black;
     cursor: pointer;
-    
+
 }
 
 .modal-primary .close {
     position: absolute;
     top: 26px;
     right: 30px;
-    font-size: 20px;
-    cursor: pointer;
-    font-size: 15px;
+    font-weight: bold;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
 }
 
 .line {
-    width: 65%;
+    width: 420px;
     height: 1px;
     background: #b3b3b3;
+    margin-top: 60px;
 }
 
 .btn-modal1 {
@@ -92,7 +101,8 @@
     font-weight: 700;
     color: white;
     background-color: #1d6154;
-    margin: 32px auto;
+    margin-top: 38px;
+    margin-bottom: 45px;
     width: 237px;
     height: 36px;
     text-align: center;
@@ -102,21 +112,138 @@
 
 }
 
-
-
+.modal-secondary .active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
 .modal-secondary .close {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 25px;
+    right: 30px;
     font-size: 20px;
     cursor: pointer;
 }
 
 .modal-secondary .arrowReturn {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 25px;
+    left: 30px;
     font-size: 20px;
     cursor: pointer;
+}
+
+.modal-secondary .title-modal {
+    font-family: 'Work Sans';
+    font-size: 26px;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 46px;
+}
+
+#dataForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-secondary .field-drop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #E8F1F6;
+    width: 420px;
+    height: 170px;
+    border-radius: 3px;
+    background: #E8f1f6;
+    margin-bottom: 30px;
+}
+
+.modal-secondary .image-drop {
+    font-size: 76px;
+    color: #CBD6DC;
+    margin-bottom: 10px;
+}
+
+#btn-add-picture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-family: "Work Sans";
+    font-size: 14px;
+    color: #306685;
+    font-style: normal;
+    font-weight: 500;
+    border: 1px solid #CBD6DC;
+    background: #CBD6DC;
+    width: 173px;
+    height: 36px;
+    border-radius: 50px;
+    margin-bottom: 10px;
+    cursor: grab;
+}
+
+.field-drop p {
+    color: #444;
+    text-align: center;
+    font-family: "Work Sans";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 20;
+}
+
+.fieldForm {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 20px;
+}
+
+.fieldForm label {
+    font-family: "Work Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 10px;
+}
+
+.fieldForm input {
+    width: 420px;
+    height: 51px;
+    background: #FFF;
+    border: none;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+    margin-bottom: 47px;
+}
+
+#category-style {
+    width: 420px;
+    height: 51px;
+    background: #FFF;
+    border: none;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+
+.line {
+    width: 420px;
+    height: 1px;
+    background: #b3b3b3;
+    margin-top: 60px;
+}
+
+.uploadSubmit {
+    color: white;
+    width: 237px;
+    height: 36px;
+    border: none;
+    border-radius: 60px;
+    background: #A7A7A7;
+    margin-top: 30px ;
+    margin-bottom: 55px;
 }

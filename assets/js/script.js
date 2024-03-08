@@ -1,4 +1,3 @@
-
 // Variables Globales
 let works = [];
 let galleryElement = document.querySelector(".gallery");
@@ -24,6 +23,7 @@ async function getWorks() {
 // Fonction asynchrone pour afficher tous les travaux dans la galerie HTML
 async function displayAllWorksInHtml() {
     await getWorks();
+    galleryElement.innerHTML = "";
     works.forEach(function (work) {
         const figureElement = document.createElement("figure");
         figureElement.setAttribute("data-category", work.categoryId);
@@ -99,7 +99,5 @@ async function filterWorksByCategory(event) {
     }
 }
 
-// Appel des fonctions pour afficher toutes les travaux et toutes les catégories
-// filterWorksByCategory();
 displayAllWorksInHtml();
 displayAllCategoriesInHtml();

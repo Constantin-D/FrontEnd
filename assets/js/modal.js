@@ -1,5 +1,3 @@
-// const modifyIcon = document.createElement("edit-iccon")
-
 // Fonction pour récupérer les travaux depuis l'API et les afficher dans la modal
 async function displayWorksInModal1() {
     try {
@@ -8,19 +6,21 @@ async function displayWorksInModal1() {
 
         // Sélectionner la div image-gallery-modal
         const modalGallery = document.querySelector(".image-gallery-modal");
-
+        modalGallery.innerHTML = "";
         // Parcourir les travaux et les afficher dans la modal
         works.forEach((work) => {
-           
             const workThumbnail = document.createElement("figure");
             workThumbnail.classList.add("work-thumbnail");
-            
+
             const thumbnailImage = document.createElement("img");
             thumbnailImage.src = work.imageUrl;
             workThumbnail.appendChild(thumbnailImage);
-        
+
             const deleteIcon = document.createElement("iDelete");
             deleteIcon.classList.add("fa-solid", "fa-trash-can", "delete-icon");
+            deleteIcon.addEventListener("click", (e) => {
+                deleteWork(work.id);
+            });
             workThumbnail.appendChild(deleteIcon);
             // Ajouter la vignette à la modal
             modalGallery.appendChild(workThumbnail);
@@ -30,64 +30,97 @@ async function displayWorksInModal1() {
     }
 }
 
-// Appeler la fonction pour afficher les travaux dans la modal
 displayWorksInModal1();
 
-document.addEventListener("DOMContentLoaded", function () {
-    const modalContainer = document.getElementById("modalContainer");
-    const primaryModal = document.querySelector(".modal-primary");
-    const secondaryModal = document.querySelector(".modal-secondary");
-    const closeModalButtons = document.querySelectorAll(".close");
-    const overlay = document.querySelector(".overlay");
-    const btnAddPhoto = document.querySelector(".btn-modal1");
-    const btnReturn = document.querySelector(".arrowReturn");
-    
+// document.addEventListener("DOMContentLoaded", function () {
+const modalContainer = document.getElementById("modalContainer");
+const primaryModal = document.querySelector(".modal-primary");
+const secondaryModal = document.querySelector(".modal-secondary");
+const closeModalButtons = document.querySelectorAll(".close");
+const overlay = document.querySelector(".overlay");
+const btnAddPhoto = document.querySelector(".btn-modal1");
+const btnReturn = document.querySelector(".arrowReturn");
 
-    // Fonction pour ouvrir et fermer les modales 
-    function openPrimaryModal() {
-        modalContainer.classList.add("active");
-        primaryModal.classList.remove("hidden");
-    }
+// Fonction pour ouvrir et fermer les modales
+function openPrimaryModal() {
+    modalContainer.classList.add("active");
+    primaryModal.classList.remove("hidden");
+}
 
-    function closePrimaryModal() {
-        modalContainer.classList.remove("active");
-        primaryModal.classList.add("hidden");
-    }
+function closePrimaryModal() {
+    modalContainer.classList.remove("active");
+    primaryModal.classList.add("hidden");
+}
 
-    function openSecondaryModal() {
-        primaryModal.classList.add("hidden");
-        secondaryModal.classList.remove("hidden");
-    }
+function openSecondaryModal() {
+    primaryModal.classList.add("hidden");
+    secondaryModal.classList.remove("hidden");
+}
 
-    function returnToPrimaryModal() {
-        secondaryModal.classList.add("hidden");
-        primaryModal.classList.remove("hidden");
-    }
+function closeSecondaryModal() {
+    modalContainer.classList.remove("active");
+    secondaryModal.classList.add("hidden");
+    primaryModal.classList.add("active");
+    primaryModal.classList.remove("hidden");
+}
 
-    // Ajouter des écouteurs d'événements 
-    closeModalButtons.forEach((button) => {
-        button.addEventListener("click", () => {
-            closePrimaryModal();
-            closeSecondaryModal();
-        });
-    });
+function returnToPrimaryModal() {
+    secondaryModal.classList.add("hidden");
+    primaryModal.classList.remove("hidden");
+}
 
-    overlay.addEventListener("click", () => {
+// Ajouter des écouteurs d'événements
+closeModalButtons.forEach((button) => {
+    button.addEventListener("click", () => {
         closePrimaryModal();
         closeSecondaryModal();
     });
-
-    btnAddPhoto.addEventListener("click", () => {
-        openSecondaryModal();
-    });
-
-    btnReturn.addEventListener("click", () => {
-        returnToPrimaryModal();
-    });
-
-    // editIcon.addEventListener("click", () => {
-    //     openPrimaryModal(); // Ouvrir la primaryModal
-    // });
 });
 
+overlay.addEventListener("click", () => {
+    closePrimaryModal();
+    closeSecondaryModal();
+});
 
+btnAddPhoto.addEventListener("click", () => {
+    openSecondaryModal();
+});
+
+btnReturn.addEventListener("click", () => {
+    returnToPrimaryModal();
+});
+
+// fonction pour supprimer (works) une Vignette
+async function deleteWork(workId) {
+    console.log(workId);
+    console.log(token);
+    debugger;
+    try {
+        await fetch(`http://localhost:5678/api/works/${workId}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json",
+            },
+        })
+            .then((response) => {
+                if (response.ok) {
+                    // La suppression a réussi, actualiser le DOM
+                    displayAllWorksInHtml();
+                    displayWorksInModal1();
+                    console.log("Le travail a été supprimé avec succès.");
+                } else {
+                    // La suppression a échoué, afficher un message d'erreur
+                    console.error("Erreur lors de la suppression du travail.");
+                }
+            })
+            .catch((error) => {
+                console.error(
+                    "Erreur lors de la suppression du travail:",
+                    error
+                );
+            });
+    } catch (error) {
+        console.log(error);
+    }
+}
