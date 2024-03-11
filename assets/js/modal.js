@@ -124,3 +124,78 @@ async function deleteWork(workId) {
         console.log(error);
     }
 }
+
+//
+// Code JavaScript
+document.addEventListener("DOMContentLoaded", function () {
+    // Récupérer les éléments du formulaire
+    const form = document.getElementById("dataForm");
+    const submitButton = document.querySelector(".uploadSubmit");
+    const imageInput = document.getElementById("file-picture");
+    const fieldDrop = document.querySelector(".modal-secondary .field-drop");
+    const errorMessage = document.createElement("div");
+    errorMessage.classList.add("error-message");
+    errorMessage.style.color = "red";
+    fieldDrop.appendChild(errorMessage);
+
+    // Ajouter un écouteur d'événement sur le changement de l'input file pour afficher la prévisualisation de l'image
+    imageInput.addEventListener("change", function (e) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+                imagePreview.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Ajouter un écouteur d'événement sur la soumission du formulaire
+    form.addEventListener("submit", function (event) {
+        // Valider le formulaire
+        if (!validateForm()) {
+            event.preventDefault(); // Empêcher la soumission du formulaire si la validation échoue
+        }
+    });
+
+    // Fonction de validation du formulaire
+    function validateForm() {
+        let isValid = true;
+        errorMessage.textContent = ""; // Réinitialiser le message d'erreur
+
+        // Valider le titre
+        const title = document.getElementById("title").value.trim();
+        if (title === "") {
+            errorMessage.textContent = "Veuillez saisir un titre.";
+            isValid = false;
+        }
+
+        // Valider la catégorie
+        const category = document.getElementById("category-style").value.trim();
+        if (category === "") {
+            errorMessage.textContent = "Veuillez sélectionner une catégorie.";
+            isValid = false;
+        }
+
+        // Valider l'image
+        const image = imageInput.files[0];
+        if (!image) {
+            errorMessage.textContent = "Veuillez sélectionner une image.";
+            isValid = false;
+        } else if (!["image/jpeg", "image/png"].includes(image.type)) {
+            errorMessage.textContent =
+                "Veuillez sélectionner une image au format jpg ou png.";
+            isValid = false;
+        } else if (image.size > 4 * 1024 * 1024) {
+            // 4 Mo en octets
+            errorMessage.textContent =
+                "La taille de l'image ne doit pas dépasser 4 Mo.";
+            isValid = false;
+        }
+
+        // Retourner true si le formulaire est valide, sinon false
+        return isValid;
+    }
+});
+
