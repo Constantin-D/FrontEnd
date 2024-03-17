@@ -101,22 +101,23 @@
 				<div class="field-drop">
 					<i class="fa-regular fa-image image-drop"></i>
 					<label id="btn-add-picture" for="file-picture">+ Ajouter photo</label>
-					<input type="file" hidden name="image" id="file-picture" multiple
-						accept="image/png, image/jpeg">
+					<input type="file" hidden name="image" id="file-picture" multiple accept="image/png, image/jpeg">
 					<p>jpg, png : 4mo max</p>
 					<img id="image-preview" hidden src="/" alt="Image preview">
-						<!-- style="display:none; max-width: 100px; max-height: 100px;"> -->
+					<!-- style="display:none; max-width: 100px; max-height: 100px;"> -->
 				</div>
 				<div class="fieldForm">
 					<label for="title">Titre</label>
+					<!-- <small>veillez selectionner un titre</small> -->
 					<input type="text" id="title" name="title">
-					<label for="categorieStyle">Catégorie</label>
-					<select name="category" id="category-style">
+					<!-- <label for="categoryStyle">Catégorie</label>
+					<small></small>
+					<select name="category" id="categoryStyle">
 						<option value=""></option>
 						<option value="1">Objets</option>
 						<option value="2">Appartements</option>
 						<option value="3">Hôtels & Restaurants</option>
-					</select>
+					</select> -->
 				</div>
 				<hr class="line">
 				<button type="submit" class="uploadSubmit">Valider</button>

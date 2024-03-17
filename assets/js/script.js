@@ -59,12 +59,13 @@ async function displayAllCategoriesInHtml() {
 
     // // Ajouter la catégorie "Tous" au début du tableau des catégories
     categories.unshift({ id: 0, name: "Tous" });
-    
+
     // Affichage des boutons des autres catégories
     categories.forEach(function (category) {
         const buttonElement = document.createElement("button");
         buttonElement.textContent = category.name;
         buttonElement.setAttribute("data-category-id", category.id);
+        buttonElement.classList.add("filter-button");
         buttonElement.addEventListener("click", filterWorksByCategory);
         filtersElement.appendChild(buttonElement);
     });

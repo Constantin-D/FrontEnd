@@ -1,3 +1,5 @@
+const imagePreview = document.getElementById("image-preview");
+
 // Fonction pour récupérer les travaux depuis l'API et les afficher dans la modal
 async function displayWorksInModal1() {
     try {
@@ -125,77 +127,217 @@ async function deleteWork(workId) {
     }
 }
 
-//
-// Code JavaScript
-document.addEventListener("DOMContentLoaded", function () {
-    // Récupérer les éléments du formulaire
-    const form = document.getElementById("dataForm");
-    const submitButton = document.querySelector(".uploadSubmit");
-    const imageInput = document.getElementById("file-picture");
-    const fieldDrop = document.querySelector(".modal-secondary .field-drop");
+// Récupérer les éléments du formulaire
+const form = document.getElementById("dataForm");
+const submitButton = document.querySelector(".uploadSubmit");
+const imageInput = document.getElementById("file-picture");
+const titleInput = document.getElementById("title");
+// const categoryInput = document.getElementById("categoryStyle");
+
+// Créer le nouveau label
+const categoryLabel = document.createElement("label");
+categoryLabel.setAttribute("for", "categoryStyle");
+categoryLabel.textContent = "Catégorie";
+
+// Créer le nouveau champ "category"
+const categoryInput = document.createElement("select");
+categoryInput.id = "categoryStyle";
+categoryInput.name = "category";
+// debugger
+
+// Créer les options
+const categoriesForSelect = [
+    { value: "", text: "" },
+    { value: "1", text: "Objets" },
+    { value: "2", text: "Appartements" },
+    { value: "3", text: "Hôtels & Restaurants" },
+]; // Remplacez par vos catégories
+categoriesForSelect.forEach(function (category) {
+    const optionElement = document.createElement("option");
+    optionElement.value = category.value;
+    optionElement.textContent = category.text;
+    categoryInput.appendChild(optionElement);
+    // debugger
+});
+
+// Insérer le label et le champ "select" après le champ "title"
+titleInput.parentNode.insertBefore(categoryLabel, titleInput.nextSibling);
+titleInput.parentNode.insertBefore(categoryInput, categoryLabel.nextSibling);
+
+// Créer des éléments de message d'erreur pour chaque champ de formulaire
+const titleErrorMessage = createErrorMessage();
+titleInput.parentNode.insertBefore(titleErrorMessage, titleInput.nextSibling);
+const categoryErrorMessage = createErrorMessage();
+categoryInput.parentNode.insertBefore(
+    categoryErrorMessage,
+    categoryInput.nextSibling
+);
+const imageErrorMessage = createErrorMessage();
+imageInput.parentNode.insertBefore(imageErrorMessage, imageInput.nextSibling);
+
+// Ajouter un écouteur d'événement sur la soumission du formulaire
+form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    //  debugger
+    // Valider le formulaire
+    if (validateForm()) {
+        console.log(form);
+        const formData = new FormData(form);
+        fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+            body: formData,
+        })
+            .then((response) => {
+                if (response.status === 201) {
+                    // console.log("Le travail a été créé avec succès.");
+                    return response.json();
+                }
+            })
+            .then((work) => {
+                console.log(work);
+                displayWorksInModal1();
+                displayAllWorksInHtml();
+                imagePreview.style.display = "none";
+                form.reset();
+                closeSecondaryModal();
+            })
+            .catch((error) => {
+                console.error("Erreur lors de la création du travail:", error);
+            });
+        console.log(form);
+        // debugger;
+    }
+});
+
+// Ajouter un écouteur d'événement sur le clic pour masquer les messages d'erreur
+document.addEventListener("click", function () {
+    titleErrorMessage.style.display = "none";
+    categoryErrorMessage.style.display = "none";
+    imageErrorMessage.style.display = "none";
+});
+
+// Fonction pour créer un élément de message d'erreur
+function createErrorMessage() {
     const errorMessage = document.createElement("div");
     errorMessage.classList.add("error-message");
     errorMessage.style.color = "red";
-    fieldDrop.appendChild(errorMessage);
+    errorMessage.style.display = "none"; // Masquer par défaut
+    return errorMessage;
+}
 
-    // Ajouter un écouteur d'événement sur le changement de l'input file pour afficher la prévisualisation de l'image
-    imageInput.addEventListener("change", function (e) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                imagePreview.src = e.target.result;
-                imagePreview.style.display = "block";
-            };
-            reader.readAsDataURL(file);
-        }
-    });
+// Fonction de validation du formulaire
+function validateForm() {
+    let isValid = true;
 
-    // Ajouter un écouteur d'événement sur la soumission du formulaire
-    form.addEventListener("submit", function (event) {
-        // Valider le formulaire
-        if (!validateForm()) {
-            event.preventDefault(); // Empêcher la soumission du formulaire si la validation échoue
-        }
-    });
+    // Valider le titre
+    const title = titleInput.value.trim();
+    if (title === "") {
+        titleErrorMessage.textContent = "Veuillez saisir un titre.";
+        titleErrorMessage.style.display = "block"; // Afficher le message d'erreur
+        isValid = false;
+    }
 
-    // Fonction de validation du formulaire
-    function validateForm() {
-        let isValid = true;
-        errorMessage.textContent = ""; // Réinitialiser le message d'erreur
+    // Valider la catégorie
+    const category = categoryInput.value.trim();
+    if (category === "") {
+        categoryErrorMessage.textContent =
+            "Veuillez sélectionner une catégorie.";
+        categoryErrorMessage.style.display = "block"; // Afficher le message d'erreur
+        isValid = false;
+    }
 
-        // Valider le titre
-        const title = document.getElementById("title").value.trim();
-        if (title === "") {
-            errorMessage.textContent = "Veuillez saisir un titre.";
-            isValid = false;
-        }
+    // Valider l'image
+    const image = imageInput.files[0];
+    if (!image) {
+        imageErrorMessage.textContent = "Veuillez sélectionner une image.";
+        imageErrorMessage.style.display = "block"; // Afficher le message d'erreur
+        isValid = false;
+    } else if (!["image/jpeg", "image/png"].includes(image.type)) {
+        imageErrorMessage.textContent =
+            "Veuillez sélectionner une image au format jpg ou png.";
+        imageErrorMessage.style.display = "block"; // Afficher le message d'erreur
+        isValid = false;
+    } else if (image.size > 4 * 1024 * 1024) {
+        // 4 Mo en octets
+        imageErrorMessage.textContent =
+            "La taille de l'image ne doit pas dépasser 4 Mo.";
+        imageErrorMessage.style.display = "block"; // Afficher le message d'erreur
+        isValid = false;
+    }
 
-        // Valider la catégorie
-        const category = document.getElementById("category-style").value.trim();
-        if (category === "") {
-            errorMessage.textContent = "Veuillez sélectionner une catégorie.";
-            isValid = false;
-        }
+    // Retourner true si le formulaire est valide, sinon false
+    return isValid;
+}
 
-        // Valider l'image
-        const image = imageInput.files[0];
-        if (!image) {
-            errorMessage.textContent = "Veuillez sélectionner une image.";
-            isValid = false;
-        } else if (!["image/jpeg", "image/png"].includes(image.type)) {
-            errorMessage.textContent =
-                "Veuillez sélectionner une image au format jpg ou png.";
-            isValid = false;
-        } else if (image.size > 4 * 1024 * 1024) {
-            // 4 Mo en octets
-            errorMessage.textContent =
-                "La taille de l'image ne doit pas dépasser 4 Mo.";
-            isValid = false;
-        }
+// Fonction pour vérifier si tous les champs sont valides
+function checkValidity() {
+    if (
+        titleInput.value.trim() !== "" &&
+        categoryInput.value.trim() !== "" &&
+        imageInput.files.length > 0
+    ) {
+        submitButton.style.backgroundColor = "#1d6154"; // Changer la couleur du bouton submit en vert
+        submitButton.disabled = false; // Activer le bouton submit
+    } else {
+        submitButton.style.backgroundColor = ""; // Réinitialiser la couleur du bouton submit
+        submitButton.disabled = true; // Désactiver le bouton submit
+    }
+}
 
-        // Retourner true si le formulaire est valide, sinon false
-        return isValid;
+// Ajouter des écouteurs d'événements sur les champs du formulaire pour vérifier la validité
+titleInput.addEventListener("input", checkValidity);
+categoryInput.addEventListener("input", checkValidity);
+imageInput.addEventListener("change", checkValidity);
+
+// Ajouter un écouteur d'événement sur le changement de l'input file pour afficher la prévisualisation de l'image
+imageInput.addEventListener("change", function (e) {
+    const file = e.target.files[0];
+    // debugger;
+
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+            imagePreview.src = e.target.result;
+            imagePreview.style.display = "block";
+        };
+        reader.readAsDataURL(file);
     }
 });
+
+// form.addEventListener("submit", function (event) {
+//     // Valider le formulaire
+//     if (!validateForm()) {
+//         event.preventDefault(); // Empêcher la soumission du formulaire si la validation échoue
+//     } else {
+//         //ici envoyer les éléments du formulaire avec ce que l'on a vu ensemble sur le formData
+//     }
+// });
+
+// let formData = new FormData();
+// formData.append("title", title);
+// formData.append("category", category);
+// formData.append("image", image);
+
+// formData.append("image", fileInput.files[0]);
+
+// fetch(`http://localhost:5678/api/works`, {
+//     method: "POST",
+//     headers: {
+//       "authorization":`Bearer ${token}`
+//     },
+//     body: formData
+//   })
+//   .then(response => {
+//     if (response.status === 201) {
+//       console.log("Le travail a été créé avec succès.");
+//       return response.json();
+//     }
+//   })
+//   .then(works => {
+//    galleryElement.innerHTML = "";
+
+//     console.log(data)
 
