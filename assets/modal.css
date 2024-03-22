@@ -7,7 +7,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-primary,
@@ -27,6 +27,7 @@
     display: block;
 }
 
+/* Modale 1 */
 .modal-primary {
     display: flex;
     flex-direction: column;
@@ -97,10 +98,14 @@
 }
 
 .btn-modal1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-family: "Syne";
     font-weight: 700;
     color: white;
     background-color: #1d6154;
+    padding: 12px 0;
     margin-top: 38px;
     margin-bottom: 45px;
     width: 237px;
@@ -112,6 +117,7 @@
 
 }
 
+/* Modale 2 */
 .modal-secondary .active {
     display: flex;
     flex-direction: column;
@@ -159,7 +165,6 @@
     height: 170px;
     border-radius: 3px;
     background: #E8f1f6;
-    margin-bottom: 30px;
     position: relative;
 }
 
@@ -212,7 +217,6 @@
     display: flex;
     flex-direction: column;
     align-items: start;
-    margin-top: 20px;
 }
 
 .fieldForm label {
@@ -232,7 +236,6 @@
     background: #FFF;
     border: none;
     box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
-    /* margin-bottom: 47px; */
 }
 
 #categoryStyle {

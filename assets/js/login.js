@@ -3,20 +3,37 @@ const loginForm = document.querySelector(".identifyForm");
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const emailRegex = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
+const emailError = document.querySelector("#email-error");
+const passwordError = document.querySelector("#password-error");
 
 // Écouteur d'événement pour la soumission du formulaire de connexion
 loginForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     let validationCount = 0;
+
+    // Vérifier si le champ email est vide ou invalide
     if (emailInput.value === "") {
+        emailError.textContent = "Veuillez entrer un email.";
+        emailError.style.color = "red";
+        emailInput.style.border = "1px solid red";
     } else if (!emailRegex.test(emailInput.value)) {
+        emailError.textContent = "Veuillez entrer un email valide.";
+        emailError.style.color = "red";
+        emailInput.style.border = "1px solid red";
     } else {
         validationCount++;
+        emailError.textContent = "";
+        emailInput.style.border = "1px solid green";
     }
 
     // Vérifier si le champ mot de passe est vide
     if (passwordInput.value === "") {
+        passwordError.textContent = "Veuillez entrer un mot de passe.";
+        passwordError.style.color = "red";
+        passwordInput.style.border = "1px solid red";
     } else {
+        passwordError.textContent = "";
+        passwordInput.style.border = "1px solid green";
         validationCount++;
     }
 
@@ -73,3 +90,42 @@ loginForm.addEventListener("submit", async (event) => {
         }
     }
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

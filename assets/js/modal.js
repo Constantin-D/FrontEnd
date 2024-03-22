@@ -1,4 +1,5 @@
 const imagePreview = document.getElementById("image-preview");
+const btnAddPicture = document.getElementById("btn-add-picture");
 
 // Fonction pour récupérer les travaux depuis l'API et les afficher dans la modal
 async function displayWorksInModal1() {
@@ -18,7 +19,7 @@ async function displayWorksInModal1() {
             thumbnailImage.src = work.imageUrl;
             workThumbnail.appendChild(thumbnailImage);
 
-            const deleteIcon = document.createElement("iDelete");
+            const deleteIcon = document.createElement("i");
             deleteIcon.classList.add("fa-solid", "fa-trash-can", "delete-icon");
             deleteIcon.addEventListener("click", (e) => {
                 deleteWork(work.id);
@@ -34,12 +35,13 @@ async function displayWorksInModal1() {
 
 displayWorksInModal1();
 
-// document.addEventListener("DOMContentLoaded", function () {
-const modalContainer = document.getElementById("modalContainer");
+
+// Récupérer les éléments des modales
+const modalContainer = document.querySelector("#modalContainer");
 const primaryModal = document.querySelector(".modal-primary");
 const secondaryModal = document.querySelector(".modal-secondary");
 const closeModalButtons = document.querySelectorAll(".close");
-const overlay = document.querySelector(".overlay");
+// Cela ne fonctionne pas const overlay = document.querySelector(".overlay");
 const btnAddPhoto = document.querySelector(".btn-modal1");
 const btnReturn = document.querySelector(".arrowReturn");
 
@@ -92,11 +94,14 @@ btnReturn.addEventListener("click", () => {
     returnToPrimaryModal();
 });
 
-// fonction pour supprimer (works) une Vignette
+
+
+
+// fonction pour supprimer (works) une ou plusieurs Vignette
 async function deleteWork(workId) {
     console.log(workId);
     console.log(token);
-    debugger;
+    
     try {
         await fetch(`http://localhost:5678/api/works/${workId}`, {
             method: "DELETE",
@@ -127,12 +132,13 @@ async function deleteWork(workId) {
     }
 }
 
+
+
 // Récupérer les éléments du formulaire
-const form = document.getElementById("dataForm");
+const form = document.querySelector("#dataForm");
 const submitButton = document.querySelector(".uploadSubmit");
-const imageInput = document.getElementById("file-picture");
-const titleInput = document.getElementById("title");
-// const categoryInput = document.getElementById("categoryStyle");
+const imageInput = document.querySelector("#file-picture");
+const titleInput = document.querySelector("#title");
 
 // Créer le nouveau label
 const categoryLabel = document.createElement("label");
@@ -143,7 +149,6 @@ categoryLabel.textContent = "Catégorie";
 const categoryInput = document.createElement("select");
 categoryInput.id = "categoryStyle";
 categoryInput.name = "category";
-// debugger
 
 // Créer les options
 const categoriesForSelect = [
@@ -151,13 +156,12 @@ const categoriesForSelect = [
     { value: "1", text: "Objets" },
     { value: "2", text: "Appartements" },
     { value: "3", text: "Hôtels & Restaurants" },
-]; // Remplacez par vos catégories
+]; // Remplacez par les catégories
 categoriesForSelect.forEach(function (category) {
     const optionElement = document.createElement("option");
     optionElement.value = category.value;
     optionElement.textContent = category.text;
     categoryInput.appendChild(optionElement);
-    // debugger
 });
 
 // Insérer le label et le champ "select" après le champ "title"
@@ -178,7 +182,6 @@ imageInput.parentNode.insertBefore(imageErrorMessage, imageInput.nextSibling);
 // Ajouter un écouteur d'événement sur la soumission du formulaire
 form.addEventListener("submit", function (event) {
     event.preventDefault();
-    //  debugger
     // Valider le formulaire
     if (validateForm()) {
         console.log(form);
@@ -192,7 +195,7 @@ form.addEventListener("submit", function (event) {
         })
             .then((response) => {
                 if (response.status === 201) {
-                    // console.log("Le travail a été créé avec succès.");
+                    console.log("Le travail a été créé avec succès.");
                     return response.json();
                 }
             })
@@ -208,7 +211,6 @@ form.addEventListener("submit", function (event) {
                 console.error("Erreur lors de la création du travail:", error);
             });
         console.log(form);
-        // debugger;
     }
 });
 
@@ -227,6 +229,7 @@ function createErrorMessage() {
     errorMessage.style.display = "none"; // Masquer par défaut
     return errorMessage;
 }
+
 
 // Fonction de validation du formulaire
 function validateForm() {
@@ -248,6 +251,7 @@ function validateForm() {
         categoryErrorMessage.style.display = "block"; // Afficher le message d'erreur
         isValid = false;
     }
+
 
     // Valider l'image
     const image = imageInput.files[0];
@@ -295,49 +299,19 @@ imageInput.addEventListener("change", checkValidity);
 // Ajouter un écouteur d'événement sur le changement de l'input file pour afficher la prévisualisation de l'image
 imageInput.addEventListener("change", function (e) {
     const file = e.target.files[0];
-    // debugger;
-
     if (file) {
         const reader = new FileReader();
         reader.onload = function (e) {
             imagePreview.src = e.target.result;
+            btnAddPicture.style.display = "none";
             imagePreview.style.display = "block";
         };
         reader.readAsDataURL(file);
     }
 });
 
-// form.addEventListener("submit", function (event) {
-//     // Valider le formulaire
-//     if (!validateForm()) {
-//         event.preventDefault(); // Empêcher la soumission du formulaire si la validation échoue
-//     } else {
-//         //ici envoyer les éléments du formulaire avec ce que l'on a vu ensemble sur le formData
-//     }
-// });
 
-// let formData = new FormData();
-// formData.append("title", title);
-// formData.append("category", category);
-// formData.append("image", image);
 
-// formData.append("image", fileInput.files[0]);
 
-// fetch(`http://localhost:5678/api/works`, {
-//     method: "POST",
-//     headers: {
-//       "authorization":`Bearer ${token}`
-//     },
-//     body: formData
-//   })
-//   .then(response => {
-//     if (response.status === 201) {
-//       console.log("Le travail a été créé avec succès.");
-//       return response.json();
-//     }
-//   })
-//   .then(works => {
-//    galleryElement.innerHTML = "";
 
-//     console.log(data)
 

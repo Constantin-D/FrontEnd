@@ -136,8 +136,6 @@ table {
 
 /** end reset css**/
 body {
-    /* max-width: 1140px;
-    margin: auto; */
     font-family: "Work Sans";
     font-size: 14px;
 }
@@ -238,6 +236,8 @@ li:hover {
     margin-bottom: 1em;
 }
 
+
+/* Filtres des catégories */
 #filters {
     display: flex;
     justify-content: center;
@@ -246,10 +246,11 @@ li:hover {
 .filter-button {
     font-family: "Syne";
     font-weight: 700;
+    font-size: 16px;
     color: #1d6154;
     background-color: white;
-    margin: 2em 0.5em;
-    text-align: center;
+    height: 30px;
+    margin: 32px 8px;
     border-color: #1d6154;
     border-radius: 60px;
     cursor: pointer;
