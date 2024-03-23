@@ -10,6 +10,11 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.overlay {
+    width: 100%;
+    height: 100%;
+}
+
 .modal-primary,
 .modal-secondary {
     position: absolute;
