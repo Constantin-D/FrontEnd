@@ -32,13 +32,18 @@
     display: block;
 }
 
+/* Masquer la barre de défilement */
+.modal-primary::-webkit-scrollbar,
+.modal-secondary::-webkit-scrollbar {
+    display: none;
+}
+
 /* Modale 1 */
 .modal-primary {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .modal-primary.hidden {
@@ -87,11 +92,9 @@
 
 .modal-primary .close {
     position: absolute;
-    top: 26px;
+    top: 25px;
     right: 30px;
-    font-weight: bold;
-    width: 24px;
-    height: 24px;
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -215,7 +218,6 @@
     font-size: 10px;
     font-style: normal;
     font-weight: 400;
-    /* margin-bottom: 20px; */
 }
 
 .fieldForm {

@@ -87,12 +87,6 @@ overlay.addEventListener("click", () => {
     closeSecondaryModal();
 });
 
-overlay.addEventListener("click", (event) => {
-    event.stopPropagation();
-    closePrimaryModal();
-    closeSecondaryModal();
-});
-
 btnAddPhoto.addEventListener("click", () => {
     openSecondaryModal();
 });
