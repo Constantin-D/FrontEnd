@@ -91,7 +91,6 @@ video {
     font: inherit;
     vertical-align: baseline;
 }
-
 /* HTML5 display-role reset for older browsers */
 article,
 aside,
@@ -115,12 +114,10 @@ ol,
 ul {
     list-style: none;
 }
-
 blockquote,
 q {
     quotes: none;
 }
-
 blockquote:before,
 blockquote:after,
 q:before,
@@ -128,7 +125,6 @@ q:after {
     content: "";
     content: none;
 }
-
 table {
     border-collapse: collapse;
     border-spacing: 0;
@@ -165,7 +161,7 @@ h1 {
     color: #b1663c;
 }
 
-h1>span {
+h1 > span {
     font-family: "Work Sans";
     font-size: 10px;
     letter-spacing: 0.1em;
@@ -177,13 +173,11 @@ h2 {
     font-size: 30px;
     color: #1d6154;
 }
-
 nav ul {
     display: flex;
     align-items: center;
     list-style-type: none;
 }
-
 nav li {
     padding: 0 10px;
     font-size: 1.2em;
@@ -220,7 +214,6 @@ li:hover {
 #introduction article {
     flex: 1;
 }
-
 #introduction h2 {
     margin-bottom: 1em;
 }
@@ -268,7 +261,6 @@ li:hover {
 .hidden {
     display: none;
 }
-
 .gallery {
     width: 100%;
     display: grid;
@@ -280,7 +272,6 @@ li:hover {
 .gallery img {
     width: 100%;
 }
-
 #contact {
     width: 50%;
     margin: auto;
