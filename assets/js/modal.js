@@ -1,6 +1,6 @@
 const imagePreview = document.getElementById("image-preview");
 const btnAddPicture = document.getElementById("btn-add-picture");
-// let overlay = document.querySelector(".overlay");
+
 
 // Fonction pour récupérer les travaux depuis l'API et les afficher dans la modal
 async function displayWorksInModal1() {
