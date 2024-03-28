@@ -1,13 +1,17 @@
+/* Page de connection */
 .loginPage {
     width: 50%;
     margin: auto;
     margin-top: 9.4rem;
-	margin-bottom: 22.5rem;
+    margin-bottom: 22.5rem;
 }
 
 .loginPage h2 {
-text-align: center;
+    text-align: center;
+}
 
+.loginPage p {
+    text-align: center;
 }
 
 .identifyForm {
@@ -18,13 +22,13 @@ text-align: center;
 
 .identifyForm label {
     margin-bottom: .5rem;
-	margin-top: 3rem;
+    margin-top: 3rem;
 }
 
 .identifyForm input {
     height: 3rem;
     border: 1px solid transparent;
-	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
 }
 
 /* Ajoutez une bordure rouge en cas d'erreur */
@@ -36,14 +40,9 @@ text-align: center;
     display: flex;
     text-align: center;
     justify-content: center;
-    /* width: 11.2rem; */
-	margin-top: 2.3rem;
 }
 
 .formFooter {
     text-align: center;
     color: #3D3D3D;
 }
-
-
-

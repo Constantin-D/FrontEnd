@@ -32,13 +32,15 @@
         <section class="loginPage">
             <h2>Log in</h2>
             <form class="identifyForm" action="/" method="post">
-                <label>E-mail </label>
+                <label for="email">E-mail</label>
                 <input type="email" id="email">
-                <label>Mot de passe</label>
+                <small id="email-error"></small>
+                <label for="password">Mot de passe</label>
                 <input type="password" id="password">
+                <small id="password-error"></small>
                 <input type="submit" value="Se connecter" class="submit-disabled" id="submit">
             </form>
-            <div class="formFooter" >
+            <div class="formFooter">
                 <a href="/">Mot de passe oublié</a>
             </div>
         </section>

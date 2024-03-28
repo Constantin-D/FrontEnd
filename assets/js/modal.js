@@ -1,6 +1,5 @@
 const imagePreview = document.getElementById("image-preview");
 const btnAddPicture = document.getElementById("btn-add-picture");
-// let overlay = document.querySelector(".overlay");
 
 // Fonction pour récupérer les travaux depuis l'API et les afficher dans la modal
 async function displayWorksInModal1() {
@@ -35,7 +34,6 @@ async function displayWorksInModal1() {
 }
 
 displayWorksInModal1();
-
 
 // Récupérer les éléments des modales
 const modalContainer = document.querySelector("#modalContainer");
@@ -87,12 +85,6 @@ overlay.addEventListener("click", () => {
     closeSecondaryModal();
 });
 
-overlay.addEventListener("click", (event) => {
-    event.stopPropagation();
-    closePrimaryModal();
-    closeSecondaryModal();
-});
-
 btnAddPhoto.addEventListener("click", () => {
     openSecondaryModal();
 });
@@ -101,14 +93,11 @@ btnReturn.addEventListener("click", () => {
     returnToPrimaryModal();
 });
 
-
-
-
 // fonction pour supprimer (works) une ou plusieurs Vignette
 async function deleteWork(workId) {
     console.log(workId);
     console.log(token);
-    
+
     try {
         await fetch(`http://localhost:5678/api/works/${workId}`, {
             method: "DELETE",
@@ -138,8 +127,6 @@ async function deleteWork(workId) {
         console.log(error);
     }
 }
-
-
 
 // Récupérer les éléments du formulaire
 const form = document.querySelector("#dataForm");
@@ -237,7 +224,6 @@ function createErrorMessage() {
     return errorMessage;
 }
 
-
 // Fonction de validation du formulaire
 function validateForm() {
     let isValid = true;
@@ -258,7 +244,6 @@ function validateForm() {
         categoryErrorMessage.style.display = "block"; // Afficher le message d'erreur
         isValid = false;
     }
-
 
     // Valider l'image
     const image = imageInput.files[0];
@@ -316,9 +301,3 @@ imageInput.addEventListener("change", function (e) {
         reader.readAsDataURL(file);
     }
 });
-
-
-
-
-
-

@@ -1,0 +1,280 @@
+.modal {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+}
+
+.modal-primary,
+.modal-secondary {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    width: 50%;
+    max-height: calc(100vh - 20px);
+    overflow: auto;
+    border-radius: 10px;
+}
+
+#modalContainer.active {
+    display: block;
+}
+
+/* Masquer la barre de défilement */
+.modal-primary::-webkit-scrollbar,
+.modal-secondary::-webkit-scrollbar {
+    display: none;
+}
+
+/* Modale 1 */
+.modal-primary {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-primary.hidden {
+    display: none;
+}
+
+.modal-primary .title-modal {
+    font-family: 'Work Sans';
+    font-size: 26px;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 46px;
+}
+
+.image-gallery-modal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    row-gap: 15px;
+    margin: 0 90px;
+}
+
+.work-thumbnail {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.work-thumbnail img {
+    width: 78px;
+    height: 105px;
+    border-radius: 5px;
+    display: block;
+}
+
+.delete-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    color: white;
+    background-color: black;
+    cursor: pointer;
+
+}
+
+.modal-primary .close {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.line {
+    width: 420px;
+    height: 1px;
+    background: #b3b3b3;
+    margin-top: 60px;
+}
+
+.btn-modal1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Syne";
+    font-weight: 700;
+    color: white;
+    background-color: #1d6154;
+    padding: 12px 0;
+    margin-top: 38px;
+    margin-bottom: 45px;
+    width: 237px;
+    height: 36px;
+    text-align: center;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer;
+
+}
+
+/* Modale 2 */
+.modal-secondary .active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-secondary .close {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-secondary .arrowReturn {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.modal-secondary .title-modal {
+    font-family: 'Work Sans';
+    font-size: 26px;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 46px;
+}
+
+#dataForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-secondary .field-drop {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #E8F1F6;
+    width: 420px;
+    height: 170px;
+    border-radius: 3px;
+    background: #E8f1f6;
+    position: relative;
+}
+
+.modal-secondary .image-drop {
+    font-size: 76px;
+    color: #CBD6DC;
+    margin-bottom: 10px;
+}
+
+#btn-add-picture {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-family: "Work Sans";
+    font-size: 14px;
+    color: #306685;
+    font-style: normal;
+    font-weight: 500;
+    border: 1px solid #CBD6DC;
+    background: #CBD6DC;
+    width: 173px;
+    height: 36px;
+    border-radius: 60px;
+    margin-bottom: 10px;
+    cursor: grab;
+}
+
+.modal-secondary .field-drop img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 129px;
+    height: 193px;
+    object-fit: contain;
+}
+
+.field-drop p {
+    color: #444;
+    text-align: center;
+    font-family: "Work Sans";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.fieldForm {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.fieldForm label {
+    font-family: "Work Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 10px;
+    margin-top: 32px;
+}
+
+.fieldForm input {
+    width: 420px;
+    height: 51px;
+    font-weight: 400;
+    background: #FFF;
+    border: none;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+
+#categoryStyle {
+    width: 420px;
+    height: 51px;
+    background: #FFF;
+    border: none;
+    box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+}
+
+#categoryStyle option {
+    color: #444;
+    font-family: "Work Sans";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.line {
+    width: 420px;
+    height: 1px;
+    background: #b3b3b3;
+    margin-top: 60px;
+}
+
+.uploadSubmit {
+    color: white;
+    width: 237px;
+    height: 36px;
+    border: none;
+    border-radius: 60px;
+    background: #A7A7A7;
+    margin-top: 30px;
+    margin-bottom: 55px;
+}
