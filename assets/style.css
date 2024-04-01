@@ -193,7 +193,7 @@ li a {
     text-decoration: none;
 }
 
-li:hover {
+li a:hover {
     color: #b1663c;
 }
 
